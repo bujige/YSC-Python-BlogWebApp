@@ -167,7 +167,7 @@ class ModelMetaclass(type):
         attrs['__delete__'] = 'delete from `%s` where `%s`=?' % (tableName, primaryKey)
         return type.__new__(cls, name, bases, attrs)
 
-# 模型的基类，集成自 dict，主要作用就是如果通过点语法来访问对象的属性取不到的话，
+# 模型的基类，继承自 dict，主要作用就是如果通过点语法来访问对象的属性取不到的话，
 # 可以定制__getattr__来通过 key 来再次获取字典里的值
 class Model(dict, metaclass=ModelMetaclass):
 
